@@ -1,5 +1,5 @@
 ## Build tools & versions used
-minSDK 30  
+minSDK 26  
 compile/ target SDK 32  
 JDK 1.8  
 gradle 7.2  
