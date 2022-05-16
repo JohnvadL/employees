@@ -1,8 +1,9 @@
 ## Build tools & versions used
-minSDK 30
-compile/ target SDK 32
-JDK 1.8
-gradle 7.2
+minSDK 30  
+compile/ target SDK 32  
+JDK 1.8  
+gradle 7.2  
+The primary testing focus of this app was a Pixel 5.  
 
 ## Steps to run the app
 Built on Android Studio using gradle.
