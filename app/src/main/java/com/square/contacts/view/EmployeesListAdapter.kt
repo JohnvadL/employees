@@ -66,11 +66,13 @@ class EmployeesListAdapter : RecyclerView.Adapter<EmployeesListAdapter.EmployeeV
             }
         }
 
-        Picasso.get()
-            .load(dataset[position].photoSmall)
-            .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
-            .networkPolicy(NetworkPolicy.OFFLINE)
-            .into(viewHolder.profilePicture, imageLoadCallback)
+        if (!dataset[position].photoSmall.isNullOrEmpty()){
+            Picasso.get()
+                .load(dataset[position].photoSmall)
+                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
+                .networkPolicy(NetworkPolicy.OFFLINE)
+                .into(viewHolder.profilePicture, imageLoadCallback)
+        }
 
         viewHolder.loadImage.setOnClickListener {
             it.isEnabled = false

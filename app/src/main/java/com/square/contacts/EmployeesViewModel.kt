@@ -25,6 +25,5 @@ class EmployeesViewModel : ViewModel() {
             "https://s3.amazonaws.com/sq-mobile-interview/employees_malformed.json"
         private const val contactsUrlEmpty =
             "https://s3.amazonaws.com/sq-mobile-interview/employees_empty.json"
-
     }
 }

@@ -47,11 +47,10 @@ class EmployeesDomainTest {
 
         Thread.sleep(200)
         Assert.assertNotNull(receivedData)
-        Assert.assertEquals(receivedData!![0].name, "name 1")
-        Assert.assertEquals(receivedData!![0].id, "uuid1")
-        Assert.assertEquals(receivedData!![0].team, "Team name ")
+        Assert.assertEquals("name 1", receivedData!![0].name, )
+        Assert.assertEquals("uuid1", receivedData!![0].id, )
+        Assert.assertEquals("Team name ", receivedData!![0].team, )
         Assert.assertNull(receivedError)
-
     }
 
     @Test
@@ -76,7 +75,6 @@ class EmployeesDomainTest {
         Assert.assertNull(receivedError)
     }
 
-
     @Test
     fun testIncorrectJson() {
         var receivedData: ArrayList<Employee>? = null
@@ -96,6 +94,29 @@ class EmployeesDomainTest {
         Thread.sleep(200)
         Assert.assertNull(receivedData)
         Assert.assertNotNull(receivedError)
+    }
+
+    @Test
+    fun testOneMalformedEmployee(){
+        var receivedData: ArrayList<Employee>? = null
+        val mockedResponse = MockResponse()
+            .setBody(oneValidEmployee)
+            .addHeader("Content-Type", "application/json")
+        var receivedError: String? = null
+
+        mockWebServer.enqueue(mockedResponse)
+        employeeDomain.getAllContacts({
+            receivedData = it
+        }, {
+            receivedError = it
+        })
+        Thread.sleep(200)
+        Assert.assertNotNull(receivedData)
+        Assert.assertEquals(1 , receivedData!!.size, )
+        Assert.assertEquals("name 2", receivedData!![0].name)
+        Assert.assertEquals("uuid2", receivedData!![0].id, )
+        Assert.assertEquals("Team 2", receivedData!![0].team, )
+        Assert.assertNull(receivedError)
     }
 
 
@@ -135,6 +156,27 @@ class EmployeesDomainTest {
       "uuid" : "uuid1",
       "phone_number" : "11223344",
       "email_address" : "email@email.com",
+}
+    """
+
+    private val oneValidEmployee ="""
+{
+  "employees": [
+    {
+      "phone_number": "11223344",
+      "email_address": "email@email.com",
+      "team": "Team name ",
+      "employee_type": "FULL_TIME"
+    },
+    {
+      "uuid": "uuid2",
+      "full_name": "name 2",
+      "phone_number": "22222222",
+      "email_address": "email2@email.com",
+      "team": "Team 2",
+      "employee_type": "CONTRACT"
+    }
+  ]
 }
     """
 }
