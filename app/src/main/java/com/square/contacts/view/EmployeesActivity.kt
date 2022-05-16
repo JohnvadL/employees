@@ -73,12 +73,15 @@ class EmployeesActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-        // Account for recyclerview being mid update when we sort
+        // Account for recyclerview being mid update when we attempt sort
         employeeList.post {
             employeesListAdapter.sortByCategory(category = position)
         }
     }
 
+    /**
+     * We do not have a scenario where nothing is selected, so ignoring this
+     */
     override fun onNothingSelected(p0: AdapterView<*>?) {}
 }
 

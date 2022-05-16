@@ -42,4 +42,4 @@ Design decisions made ->
 2. All error messages are shown as Toasts
 3. When the Application has a list of employees and the next refresh returns an error, I decided to show a toast with the error but maintain the downloaded data from the previous request
 4. In an effort to minimize network usage, I decide to add a button for each user to manually request photo if its not already in Disk Cache. So if it is in Disk Cache, we load the image into the ImageView and if it isn't, we let the user manually make a request for the image using their network.
-
+5. We are not making redundant network calls during rotate events
