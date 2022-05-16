@@ -1,0 +1,66 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/teal_200"
+    android:padding="20dp"
+    android:layout_margin="30dp"
+    android:gravity="center_vertical">
+
+    <ImageView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/white"
+        android:id="@+id/profile_picture"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:padding="20dp"
+        android:src="@color/teal_700"
+        />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/profile_picture"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/team"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintStart_toEndOf="@id/profile_picture"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:id="@+id/type"
+        app:layout_constraintTop_toBottomOf="@id/team"
+        app:layout_constraintStart_toEndOf="@id/profile_picture"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/load_image_button"
+        app:layout_constraintTop_toBottomOf="@id/type"
+        app:layout_constraintStart_toStartOf="@id/name"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/summary"
+        app:layout_constraintTop_toBottomOf="@id/profile_picture"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:maxLines="6"
+        android:scrollHorizontally="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
